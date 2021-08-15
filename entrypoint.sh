@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Xray版本
+#Xray
 if [[ -z "${VER}" ]]; then
   VER="latest"
 fi
@@ -11,20 +11,20 @@ if [[ -z "${Vless_Path}" ]]; then
 fi
 echo ${Vless_Path}
 
-if [[ -z "${Vmess-Vless-UUID}" ]]; then
-  Vmess-Vless-UUID="5c301bb8-6c77-41a0-a606-4ba11bbab084"
+if [[ -z "${Xray-UUID}" ]]; then
+  Xray-UUID="5c301bb8-6c77-41a0-a606-4ba11bbab084"
 fi
-echo ${Vmess-Vless-UUID}
+echo ${Xray-UUID}
 
 if [[ -z "${Vmess_Path}" ]]; then
   Vmess_Path="/s244"
 fi
 echo ${Vmess_Path}
 
-if [[ -z "${Vmess-Vless-UUID}" ]]; then
-  Vmess-Vless-UUID="5c301bb8-6c77-41a0-a606-4ba11bbab084"
+if [[ -z "${Xray-UUID}" ]]; then
+  Xray-UUID="5c301bb8-6c77-41a0-a606-4ba11bbab084"
 fi
-echo ${Vmess-Vless-UUID}
+echo ${Xray-UUID}
 
 if [[ -z "${Share_Path}" ]]; then
   Share_Path="/share233"
@@ -32,7 +32,6 @@ fi
 echo ${Share_Path}
 
 if [ "$VER" = "latest" ]; then
-  VER=`wget -qO- "https://api.github.com/repos/XTLS/Xray-core/releases/latest" | sed -n -r -e 's/.*"tag_name".+?"([vV0-9\.]+?)".*/\1/p'`
   [[ -z "${VER}" ]] && VER="v1.2.2"
 else
   VER="v$VER"
@@ -54,9 +53,9 @@ rm -rf wwwroot.tar.gz
 
 
 sed -e "/^#/d"\
-    -e "s/\${Vmess-Vless-UUID}/${Vmess-Vless-UUID}/g"\
+    -e "s/\${Xray-UUID}/${Xray-UUID}/g"\
     -e "s|\${Vless_Path}|${Vless_Path}|g"\
-    -e "s/\${Vmess-Vless-UUID}/${Vmess-Vless-UUID}/g"\
+    -e "s/\${Xray-UUID}/${Xray-UUID}/g"\
     -e "s|\${Vmess_Path}|${Vmess_Path}|g"\
     /conf/Xray.template.json >  /xraybin/config.json
 echo /xraybin/config.json
@@ -84,8 +83,8 @@ cat /etc/nginx/conf.d/ray.conf
 sed -e "/^#/d"\
     -e "s|\${_Vless_Path}|${Vless_Path}|g"\
     -e "s|\${_Vmess_Path}|${Vmess_Path}|g"\
-    -e "s/\${_Vmess-Vless-UUID}/${Vmess-Vless-UUID}/g"\
-    -e "s/\${_Vmess-Vless-UUID}/${Vmess-Vless-UUID}/g"\
+    -e "s/\${_Xray-UUID}/${Xray-UUID}/g"\
+    -e "s/\${_Xray-UUID}/${Xray-UUID}/g"\
     -e "$s"\
     /conf/share.html > /wwwroot/${Share_Path}/index.html
 echo /wwwroot/${Share_Path}/index.html
