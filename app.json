@@ -9,8 +9,8 @@
       "value": "workers.cloudflare.com"
     },
     
-    "Xray-UUID": {
-      "description": "Vless UUID（https://www.uuidgenerator.net/）",
+    "Xray_UUID": {
+      "description": "Xray UUID（https://www.uuidgenerator.net/）",
       "value": "5c301bb8-6c77-41a0-a606-4ba11bbab084"
     },
 
