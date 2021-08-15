@@ -24,7 +24,7 @@
             "settings": {
                 "clients": [
                     {
-                        "id": "${Vless_UUID}"
+                        "id": "${Vmess-Vless-UUID}"
                     }
                 ],
                 "decryption": "none"
@@ -45,7 +45,7 @@
             "settings": {
                 "clients": [
                     {
-                    "id": "${Vmess_UUID}",
+                    "id": "${Vmess-Vless-UUID}",
                     "level": 0,
                     "alterId": 0,
                     "email": "love@xray.com"
