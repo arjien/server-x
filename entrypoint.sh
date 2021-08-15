@@ -11,20 +11,20 @@ if [[ -z "${Vless_Path}" ]]; then
 fi
 echo ${Vless_Path}
 
-if [[ -z "${Xray-UUID}" ]]; then
-  Xray-UUID="5c301bb8-6c77-41a0-a606-4ba11bbab084"
+if [[ -z "${Xray_UUID}" ]]; then
+  Xray_UUID="5c301bb8-6c77-41a0-a606-4ba11bbab084"
 fi
-echo ${Xray-UUID}
+echo ${Xray_UUID}
 
 if [[ -z "${Vmess_Path}" ]]; then
   Vmess_Path="/s244"
 fi
 echo ${Vmess_Path}
 
-if [[ -z "${Xray-UUID}" ]]; then
-  Xray-UUID="5c301bb8-6c77-41a0-a606-4ba11bbab084"
+if [[ -z "${Xray_UUID}" ]]; then
+  Xray_UUID="5c301bb8-6c77-41a0-a606-4ba11bbab084"
 fi
-echo ${Xray-UUID}
+echo ${Xray_UUID}
 
 if [[ -z "${Share_Path}" ]]; then
   Share_Path="/share233"
@@ -53,9 +53,9 @@ rm -rf wwwroot.tar.gz
 
 
 sed -e "/^#/d"\
-    -e "s/\${Xray-UUID}/${Xray-UUID}/g"\
+    -e "s/\${Xray_UUID}/${Xray_UUID}/g"\
     -e "s|\${Vless_Path}|${Vless_Path}|g"\
-    -e "s/\${Xray-UUID}/${Xray-UUID}/g"\
+    -e "s/\${Xray_UUID}/${Xray_UUID}/g"\
     -e "s|\${Vmess_Path}|${Vmess_Path}|g"\
     /conf/Xray.template.json >  /xraybin/config.json
 echo /xraybin/config.json
@@ -83,8 +83,8 @@ cat /etc/nginx/conf.d/ray.conf
 sed -e "/^#/d"\
     -e "s|\${_Vless_Path}|${Vless_Path}|g"\
     -e "s|\${_Vmess_Path}|${Vmess_Path}|g"\
-    -e "s/\${_Xray-UUID}/${Xray-UUID}/g"\
-    -e "s/\${_Xray-UUID}/${Xray-UUID}/g"\
+    -e "s/\${_Xray_UUID}/${Xray_UUID}/g"\
+    -e "s/\${_Xray_UUID}/${Xray_UUID}/g"\
     -e "$s"\
     /conf/share.html > /wwwroot/${Share_Path}/index.html
 echo /wwwroot/${Share_Path}/index.html
